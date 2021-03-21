@@ -14,8 +14,6 @@ import mediatek2021.*;
 import persistantdata.document.*;
 import persistantdata.utilisateurs.utilisateur;
 
-// classe mono-instance : l'unique instance est connue de la bibliotheque
-// via une injection de dépendance dans son bloc static
 
 public class MediatekData implements PersistentMediatek {
 // Jean-François Brette 01/01/2018	
