@@ -6,46 +6,46 @@ public class Documents implements Document{
 	int numDoc;
 	String titre;
 	String auteur;
-	typeDocument docType;
+	typeDocument typeDoc;
 	String emprunt;
 	
-	public Documents (int numDoc, String titre, String auteur, int docType, String emprunt) {
+	public Documents (int numDoc, String titre, String auteur, int typeDoc, String emprunt) {
 		this.numDoc = numDoc;
 		this.titre = titre;
 		this.auteur = auteur;
-		this.docType = typeDocumentelector(docType);
+		this.typeDoc = typeDocumentelector(typeDoc);
 		this.emprunt = emprunt;
 	}
 	
-	public Documents (int numDoc, String titre, String auteur, int docType) {
+	public Documents (int numDoc, String titre, String auteur, int typeDoc) {
 		this.numDoc = numDoc;
 		this.titre = titre;
 		this.auteur = auteur;
-		this.docType = typeDocumentelector(docType);
+		this.typeDoc = typeDocumentelector(typeDoc);
 		this.emprunt = null;
 	}
 	
-	public Documents (String titre, String auteur, int docType) {
+	public Documents (String titre, String auteur, int typeDoc) {
 		this.numDoc = -1;
 		this.titre = titre;
 		this.auteur = auteur;
-		this.docType = typeDocumentelector(docType);
+		this.typeDoc = typeDocumentelector(typeDoc);
 		this.emprunt = null;
 	}
 
 	@Override
 	public Object[] data() {
-		Object[] documentData = {this.titre, this.auteur, this.emprunt, this.docType, this.numDoc};
+		Object[] documentData = {this.titre, this.auteur, this.emprunt, this.typeDoc, this.numDoc};
 		return documentData;
 	}
 	
 	@Override
 	public String toString() {
-		return this.numDoc + " | " + this.docType + " | " + this.titre + " | " + this.auteur;
+		return this.numDoc + " | " + this.typeDoc + " | " + this.titre + " | " + this.auteur;
 	}
 	
-	static public typeDocument typeDocumentelector(int docType) {
-		switch(docType) {
+	static public typeDocument typeDocumentelector(int typeDoc) {
+		switch(typeDoc) {
 			case 1 :
 				return typeDocument.LIVRE;
 			case 2 :
