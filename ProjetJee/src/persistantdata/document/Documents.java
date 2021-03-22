@@ -25,24 +25,18 @@ public class Documents implements Document{
 		this.emprunt = null;
 	}
 	
-	public Documents (String titre, String auteur, int typeDoc) {
-		this.numDoc = -1;
-		this.titre = titre;
-		this.auteur = auteur;
-		this.typeDoc = typeSelector(typeDoc);
-		this.emprunt = null;
-	}
 
+	@Override
+	public String toString() {
+		return this.numDoc + " | " + this.typeDoc + " | " + this.titre + " | " + this.auteur;
+	}
+	
 	@Override
 	public Object[] data() {
 		Object[] documentData = {this.titre, this.auteur, this.emprunt, this.typeDoc, this.numDoc};
 		return documentData;
 	}
 	
-	@Override
-	public String toString() {
-		return this.numDoc + " | " + this.typeDoc + " | " + this.titre + " | " + this.auteur;
-	}
 	
 	static public typeDocument typeSelector(int typeDoc) {
 		switch(typeDoc) {
