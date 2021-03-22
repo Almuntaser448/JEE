@@ -6,8 +6,8 @@ public class Documents implements Document{
 	int numDoc;
 	String titre;
 	String auteur;
-	typeDocument typeDoc;
 	String emprunt;
+	typeDocument typeDoc;
 	
 	public Documents (int numDoc, String titre, String auteur, int typeDoc, String emprunt) {
 		this.numDoc = numDoc;
@@ -25,11 +25,6 @@ public class Documents implements Document{
 		this.emprunt = null;
 	}
 	
-
-	@Override
-	public String toString() {
-		return this.numDoc + " | " + this.typeDoc + " | " + this.titre + " | " + this.auteur;
-	}
 	
 	@Override
 	public Object[] data() {

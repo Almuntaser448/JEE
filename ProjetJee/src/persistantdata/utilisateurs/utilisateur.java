@@ -53,14 +53,6 @@ public class utilisateur implements Utilisateur {
 		return utilisateurData;
 	}
 	
-	/*
-	 * @return, le login.
-	 */
-	@Override
-	public String login() {
-		return this.numUtilisateur;
-	}
-
 	
 	/* 
 	 * @return, mot de passe.
@@ -69,6 +61,15 @@ public class utilisateur implements Utilisateur {
 	public String password() {
 		return this.password;
 	}
+	
+	/*
+	 * @return, le login.
+	 */
+	@Override
+	public String login() {
+		return this.numUtilisateur;
+	}
+
 	
 	private typeUtili typeSelector(int typeUtilisateur) {
 		switch(typeUtilisateur) {
