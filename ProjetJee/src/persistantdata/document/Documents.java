@@ -13,7 +13,7 @@ public class Documents implements Document{
 		this.numDoc = numDoc;
 		this.titre = titre;
 		this.auteur = auteur;
-		this.typeDoc = typeDocumentelector(typeDoc);
+		this.typeDoc = typeSelector(typeDoc);
 		this.emprunt = emprunt;
 	}
 	
@@ -21,7 +21,7 @@ public class Documents implements Document{
 		this.numDoc = numDoc;
 		this.titre = titre;
 		this.auteur = auteur;
-		this.typeDoc = typeDocumentelector(typeDoc);
+		this.typeDoc = typeSelector(typeDoc);
 		this.emprunt = null;
 	}
 	
@@ -29,7 +29,7 @@ public class Documents implements Document{
 		this.numDoc = -1;
 		this.titre = titre;
 		this.auteur = auteur;
-		this.typeDoc = typeDocumentelector(typeDoc);
+		this.typeDoc = typeSelector(typeDoc);
 		this.emprunt = null;
 	}
 
@@ -44,7 +44,7 @@ public class Documents implements Document{
 		return this.numDoc + " | " + this.typeDoc + " | " + this.titre + " | " + this.auteur;
 	}
 	
-	static public typeDocument typeDocumentelector(int typeDoc) {
+	static public typeDocument typeSelector(int typeDoc) {
 		switch(typeDoc) {
 			case 1 :
 				return typeDocument.LIVRE;
