@@ -53,7 +53,7 @@ public class MediatekData implements PersistentMediatek {
 			this.BDD = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", login, password);
 			System.out.println("Connexion ok");
 		} catch (SQLException e) {
-			System.err.println("Error in connection");
+			System.err.println("Erreur connexion");
 			e.printStackTrace();
 		}
 	}
@@ -81,7 +81,8 @@ public class MediatekData implements PersistentMediatek {
 			
 			System.out.println("Instruction ok");
 			while (res.next()) {
-				Document d = new Documents(res.getInt("NumDoc"), res.getString("Titre"), res.getString("Auteur"), res.getInt("TypeDocument"), res.getString("Emprunt"));
+				Document d = new Documents(res.getInt("NumDoc"), res.getString("Titre"), res.getString("Auteur"),
+										res.getInt("TypeDocument"), res.getString("Emprunt"));
 				if (d != null) {
 					
 					System.out.println("Document : " + res.getString("Titre") + " de " + res.getString("Auteur"));
@@ -120,8 +121,9 @@ public class MediatekData implements PersistentMediatek {
 			System.out.println("Succès");
 			if (res.next()) {
 				
-				System.out.println("Document n°" + numDocument + " (" + res.getString("Titre") + " de " + res.getString("Auteur") + ")");
-				rechDoc = new Documents(numDocument, res.getString("Titre"), res.getString("Auteur"), res.getInt("TypeDocument"), res.getString("Emprunt"));
+				System.out.println("Document n°" + numDocument + " " + res.getString("Titre") + " de " + res.getString("Auteur"));
+				rechDoc = new Documents(numDocument, res.getString("Titre"), res.getString("Auteur"),
+							res.getInt("TypeDocument"), res.getString("Emprunt"));
 			}
 			
 			prep.close();
@@ -184,13 +186,14 @@ public class MediatekData implements PersistentMediatek {
 		} else if (args[0] == "" || args[1] == "") {
 			throw new NewDocException("Des arguments vide");
 		} else if (type > 3 || type < 1) {
-			throw new NewDocException("Tyoe non existent");
+			throw new NewDocException("Type non existent");
 		}
 		
 		args[0] = normalizeString((String) args[0]);
 		args[1] = normalizeString((String) args[0]);
 		System.out.println("Nouveau doc (" + Documents.typeSelector(type) + ": " + args[0] + " de " + args[1]);
-		String sql = "INSERT INTO DOCUMENT (NumDoc, Titre, Auteur, TypeDocument) VALUES(SeqDoc.NEXTVAL, '" + args[0] + "', '" + args[1] + "', " + type + ")";
+		String sql = "INSERT INTO DOCUMENT (NumDoc, Titre, Auteur, TypeDocument) VALUES(SeqDoc.NEXTVAL, '" + args[0]
+				+ "', '" + args[1] + "', " + type + ")";
 		
 		try {
 			
