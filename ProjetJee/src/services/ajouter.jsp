@@ -7,7 +7,7 @@ String auteur=request.getParameter("auteur");
 int typeDoc=request.getParameter("tdoc");
 String emprunt=request.getParameter("Emprunt");
 try{
-	Connection conn=DriveManager.getConnection("jdbc:oracle:thin:@localhost:1512:xe","mydp","mdp");
+	Connection conn=DriveManager.getConnection("jdbc:oracle:thin:@localhost:1512:xe","mydp","password");
 	PreparedStatement ps=conn.prepareStatement("insert into Document values(?,?,?,?)");	
 	ps.setString(1,titre);
 	ps.setString(2,auteur);
