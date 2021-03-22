@@ -42,14 +42,11 @@ public class utilisateur implements Utilisateur {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return this.numUtilisateur + " | " + this.nom + " | " + this.typeUtilisateur;
-	}
 	
 	@Override
 	public Object[] data() {
-		Object[] utilisateurData = {this.numUtilisateur, this.password, this.nom, this.typeUtilisateur};
+		Object[] utilisateurData = {this.numUtilisateur,this.password,this.nom,this.typeUtilisateur};
+		
 		return utilisateurData;
 	}
 	
