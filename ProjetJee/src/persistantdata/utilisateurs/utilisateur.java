@@ -41,15 +41,16 @@ public class utilisateur implements Utilisateur {
 		this.typeUtilisateur = typeUtili.CLIENT;
 	}
 	
-	@Override
-	public Object[] data() {
-		Object[] utilisateurData = {this.numUtilisateur, this.password, this.nom, this.typeUtilisateur};
-		return utilisateurData;
-	}
 	
 	@Override
 	public String toString() {
 		return this.numUtilisateur + " | " + this.nom + " | " + this.typeUtilisateur;
+	}
+	
+	@Override
+	public Object[] data() {
+		Object[] utilisateurData = {this.numUtilisateur, this.password, this.nom, this.typeUtilisateur};
+		return utilisateurData;
 	}
 	
 	/*
