@@ -3,12 +3,12 @@
 <%
 
 String titre=request.getParameter("titre");
-int typeDoc=request.getParameter("id");
+int typeDoc=request.getParameter("typedocument");
 
 try{
 	Connection conn=DriveManager.getConnection("jdbc:oracle:thin:@localhost:1512:xe","mydp","mdp");
-	PreparedStatement ps=conn.prepareStatement("DELETE  From Document where id=? AND titre=?");	
-	ps.setString(1,id);
+	PreparedStatement ps=conn.prepareStatement("DELETE  From Document where typedocument=? AND titre=?");	
+	ps.setString(1,typedocument);
 	ps.setString(2,titre);
 
 	int x=ps.executeUpdate();
