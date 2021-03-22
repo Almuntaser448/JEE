@@ -30,6 +30,7 @@ public class MediatekData implements PersistentMediatek {
 	}
 
 	private MediatekData() {
+		
 		try {
 			
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -37,6 +38,7 @@ public class MediatekData implements PersistentMediatek {
 		} catch (ClassNotFoundException e) {
 			System.err.println("Class non trouver");
 			e.printStackTrace();
+			
 		}
 		
 		Scanner sc = new Scanner(System.in);
@@ -45,6 +47,7 @@ public class MediatekData implements PersistentMediatek {
 		System.out.print("Entrez le mot de passe : ");
 		String password = sc.next();
 		sc.close();
+		
 		try {
 			
 			this.BDD = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", login, password);
@@ -72,13 +75,15 @@ public class MediatekData implements PersistentMediatek {
 			
 			synchronized (BDD) {
 				prep = BDD.prepareStatement(sql);
-				res = prep.executeQuery();				
+				res = prep.executeQuery();
+				
 			}
 			
 			System.out.println("Instruction ok");
 			while (res.next()) {
 				Document d = new Documents(res.getInt("NumDoc"), res.getString("Titre"), res.getString("Auteur"), res.getInt("TypeDocument"), res.getString("Emprunt"));
 				if (d != null) {
+					
 					System.out.println("Document : " + res.getString("Titre") + " de " + res.getString("Auteur"));
 					documentList.add(d);
 				}
@@ -109,6 +114,7 @@ public class MediatekData implements PersistentMediatek {
 			synchronized (BDD) {
 				prep = BDD.prepareStatement(sql);
 				res = prep.executeQuery();
+				
 			}
 			
 			System.out.println("Succès");
@@ -141,9 +147,11 @@ public class MediatekData implements PersistentMediatek {
 		ResultSet res;
 		
 		try {
+			
 			synchronized (BDD) {
 				prep = BDD.prepareStatement(sql);
 				res = prep.executeQuery();
+				
 			}
 			
 			System.out.println("Instruction ok");
@@ -202,6 +210,7 @@ public class MediatekData implements PersistentMediatek {
 	@Override
 	public void suppressDoc(int numDoc) throws SuppressException {
 		// TODO Auto-generated method stub
+		
 		Object[] documentData = getDocument(numDoc).data();
 		if (documentData[2] != null) {
 			throw new SuppressException("Document emprunter, donc impossible de le supprimer");
@@ -216,6 +225,7 @@ public class MediatekData implements PersistentMediatek {
 				PreparedStatement prep = BDD.prepareStatement(sql);
 				prep.execute();
 				prep.close();
+				
 			}
 			
 			System.out.println("Inscruction ok");
